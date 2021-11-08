@@ -1,0 +1,13 @@
+version: '3'
+services:
+  octoprint-klipper:
+    image: "dallerman/cloned-octoprint-klipper:amd64"
+    container_name: "cloned-octoprint-klipper"
+    devices:
+      - "/dev/ttyUSB0:/dev/ttyUSB0"
+    ports:
+      - "5000:5000"
+    volumes:
+      - "/mnt/user/appdata/octoprint:/home/octoprint/.octoprint"
+      - "/dev/serial/by-id/:/dev/serial/by-id/"
+    restart: unless-stopped
